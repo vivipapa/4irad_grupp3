@@ -31,4 +31,24 @@ function readContactForm(){
     '<h1>Name2_type ' + pl2_type + '!</h1>' 
   );
 
+  checkPlayers(player1_name,player2_name,pl1_type,pl2_type);
+
 }
+
+//function that checks if there are two players or a player and a computer
+function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
+  if (pl1_type==="human" && pl2_type==="human"){
+    alert(player1_name + ' you will be playing against ' + player2_name +'.');
+  }
+  else if (pl1_type==="human" && pl2_type==="computer") {
+    alert(player1_name + ' you will be playing against a computer');
+  }
+  else if (pl1_type==="computer" && pl2_type==="human"){
+    alert(player2_name + ' you will be playing against a computer');
+  }
+  //else {
+  //  alert('A computer is going to play against itshelf');
+  //}
+
+}
+
