@@ -2,6 +2,9 @@
 // before adding a click event to our button
 $(addStartGameEvent);
 
+//information about players, playersInfo    
+let playersInfo = [];
+
 // Ask jQuery to call the function
 // readContactForm when the user clicks
 // on something with the class start-btn
@@ -13,28 +16,33 @@ function addStartGameEvent(){
 function startGame(){
 
 }
-
+//This function read the ContactForm eith information about players and return the 2 players (2 objects with properties: name, number,type)
 function readContactForm(){
 
   // Read values from the form input fields
+  let player1 = new Player($('#player1_name').val(), 1, $('input[name=player1_type]:checked').val());
+  let player2 = new Player($('#player2_name').val(), 2, $('input[name=player2_type]:checked').val());
 
-  let player1_name = $('#player1_name').val();
-  let player2_name = $('#player2_name').val();
-  let pl1_type = $('input[name=player1_type]:checked').val();
-  let pl2_type = $('input[name=player2_type]:checked').val();
-
+  
   // Check if the return of the checkPlayers is true and if so stay on the same page
-  let r = checkPlayers(player1_name,player2_name,pl1_type,pl2_type);
-  if(r.stayOnPage){ return; }
+  let r = checkPlayers(player1.name, player2.name, player1.type, player2.type);
+  if(r.stayOnPage){ 
+    return;
+  }
   else {
-  // Answer the user
+  // User have filled in all info about players
+  
+  //Save information about players in a global variable
+  playersInfo = [player1, player2];
+
   // (replace all html inside the div #spela)
-    $('#spela').html(
-      '<h1>Name1 ' + player1_name + '!</h1>' +
-      '<h1>Name2 ' + player2_name + '!</h1>' +
-      '<h1>Name1_type ' + pl1_type + '!</h1>' +
-      '<h1>Name2_type ' + pl2_type + '!</h1>' 
-    );
+  $('#spela').html(
+    '<h1>Name1 ' + player1.name + '!</h1>' +
+    '<h1>Name2 ' + player2.name + '!</h1>' +
+    '<h1>Name1_type ' + player1.type + '!</h1>' +
+    '<h1>Name2_type ' + player2.type + '!</h1>' 
+  );
+
   }
 }
 
