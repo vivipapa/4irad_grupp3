@@ -32,7 +32,8 @@ function readContactForm(){
     return;
   }
   else {
-  // User have filled in all info about players
+    window.location='spel.html';
+  /*// User have filled in all info about players
   
   //Save information about players in a global variable
   playersInfo = [player1, player2];
@@ -46,7 +47,7 @@ function readContactForm(){
     '<h1>Name2 ' + player2.name + '!</h1>' +
     '<h1>Name1_type ' + player1.type + '!</h1>' +
     '<h1>Name2_type ' + player2.type + '!</h1>' 
-  );
+  );*/
 
   }
 }
