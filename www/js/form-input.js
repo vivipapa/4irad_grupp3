@@ -11,6 +11,8 @@ let playersInfo = [];
 function addStartGameEvent(){
   $('.start-btn').click(readContactForm);
   $(startGame);
+  
+  
 }
 
 function startGame(){
@@ -37,6 +39,9 @@ function readContactForm(){
 
   // (replace all html inside the div #spela)
   $('#spela').html(
+
+
+    
     '<h1>Name1 ' + player1.name + '!</h1>' +
     '<h1>Name2 ' + player2.name + '!</h1>' +
     '<h1>Name1_type ' + player1.type + '!</h1>' +
@@ -67,5 +72,5 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
     }
     return {stayOnPage:false};
   }  
-
-}
+  
+ }
