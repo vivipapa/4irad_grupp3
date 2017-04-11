@@ -9,10 +9,14 @@ let playersInfo = [];
 // readContactForm when the user clicks
 // on something with the class start-btn
 function addStartGameEvent(){
+  $('#changeMenu').click(changeSpelaToAvbryt);
   $('.start-btn').click(readContactForm);
   $(startGame);
   
-  
+}
+function changeSpelaToAvbryt(){
+  $('#changeMenu').text('Avbryt');
+  $('#changeMenu').click(gotoStartPage);
 }
 
 function startGame(){
