@@ -68,7 +68,8 @@ margin-top: 10px;
  }
 
  .winningCell {
-    opacity:0.5;
+    opacity: 0.8;
+    /*border:5px solid green;*/
  }
  
  .containerBoard {
@@ -81,7 +82,7 @@ margin-top: 10px;
  .board {
     background: royalblue;
     width: 100%;
-    height: 100%;
+    
     
  }
  
