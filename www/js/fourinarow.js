@@ -11,6 +11,8 @@ let currPlayerIndex = 0;
 //let players = [new xPlayer('Spelare Ett', 'red'), new xPlayer('Spelare Två', 'yellow')];
 
 
+
+
 function create2DArray(rows, columns) {
     let arr = new Array(rows);
     for (let i = 0; i < rows; i++) {
@@ -25,13 +27,12 @@ function create2DArray(rows, columns) {
 
 function drawTable(n, m) {
     let t = $(".board");
-    console.log(t)
     for (let i = 0; i < n; i++) {
         let row = $("<tr></tr>");
         $(t).append(row);
         for (let j = 0; j < m; j++) {
             let cell = $("<td class='cell'></td>");
-            $(cell).attr('id', i + ',' + j);
+            $(cell).attr('id', i + '-' + j);
             $(cell).data('val', valArr[i][j]);
             // console.log($(cell).attr('id'), ' : ', valArr[i][j]);
             $(row).append(cell);
@@ -47,6 +48,7 @@ let advanceTurn = function () {
 
 let findBottomFreeCell = function (row) {
     let cell = 0;
+    console.log("ROW",row)
     for (let j = 0; j < rows; j++) {
         if (valArr[j][row] > 0) {
             cell = j - 1;
@@ -57,21 +59,31 @@ let findBottomFreeCell = function (row) {
             break;
         }
     }
+    console.log("FREE CELL",cell);
     return cell;
 };
 
 let getBottomCellId = function (cell) {
     let ID = $(cell).attr('id');
     try {
-        let coords = ID.split(',');
+        let coords = ID.split('-');
         coords[1] = parseInt(coords[1]);
         coords[0] = findBottomFreeCell(coords[1]);
-        return coords;
+        return coords.join('-');
     }
     catch (err) {
 
     }
 };
+
+function markWin(...args){
+    for(let i = 0; i < args.length; i+=2){
+        let row = args[i], col = args[i+1];
+        console.log("Markwin row",row,"col",col);
+        console.log("FOUND ELEMENT",$('#' + row + '-' + col).length)
+        $('#' + row + '-' + col).addClass('winningCell');
+    }
+}
 
 let checkRow = function () {
     let isRow = false;
@@ -82,12 +94,13 @@ let checkRow = function () {
                     && valArr[i][j + 1] === valArr[i][j + 2]
                     && valArr[i][j + 2] === valArr[i][j + 3]) {
                     isRow = true;
+                    markWin(i,j,i,j+1,i,j+2,i,j+3);
                     console.log('Row: ', valArr[i][j], valArr[i][j + 1], valArr[i][j + 2], valArr[i][j + 3]);
+                    return isRow;
                 }
             }
         }
     }
-    return isRow;
 };
 
 let checkColumn = function () {
@@ -99,12 +112,13 @@ let checkColumn = function () {
                     && valArr[i + 1][j] === valArr[i + 2][j]
                     && valArr[i + 2][j] === valArr[i + 3][j]) {
                     isColumn = true;
+                    markWin(i,j,i+1,j,i+2,j,i+3,j);
                     console.log('Columns: ', valArr[i][j], valArr[i + 1][j], valArr[i + 2][j], valArr[i + 3][j]);
+                    return isColumn;
                 }
             }
         }
     }
-    return isColumn;
 };
 
 let checkDiagonal1 = function () {
@@ -116,12 +130,13 @@ let checkDiagonal1 = function () {
                     && valArr[i + 1][j + 1] === valArr[i + 2][j + 2]
                     && valArr[i + 2][j + 2] === valArr[i + 3][j + 3]) {
                     isDiag = true;
+                    markWin(i,j,i+1,j+2,i+2,j+2,i+3,j+3);
                     console.log('Diag: ', valArr[i][j], valArr[i + 1][j + 1], valArr[i + 2][j + 2], valArr[i + 3][j + 3]);
+                    return isDiag;
                 }
             }
         }
     }
-    return isDiag;
 };
 
 let checkDiagonal2 = function () {
@@ -133,12 +148,13 @@ let checkDiagonal2 = function () {
                     && valArr[i + 1][j - 1] === valArr[i + 2][j - 2]
                     && valArr[i + 2][j - 2] === valArr[i + 3][j - 3]) {
                     isDiag = true;
+                    markWin(i,j,i+1,j-1,i+2,j-2,i+3,j-3);
                     console.log('Diag: ', valArr[i][j], valArr[i + 1][j - 1], valArr[i + 2][j - 2], valArr[i + 3][j - 3]);
+                    return isDiag;
                 }
             }
         }
     }
-    return isDiag;
 };
 
 let checkBoard = function (coords) {
@@ -170,11 +186,12 @@ let getIdTrace = function (cell) {
 
 let clickCell = function () {
     let cellId = getBottomCellId(this);
-    let cell = document.getElementById(cellId);
+    let cell = $('#' + cellId);
+    cellId = cellId.split('-');
     if (cellId[0] >= 0) {
         valArr[cellId[0]][cellId[1]] = currPlayerIndex + 1;
 
-        $(cell).css('backgroundColor', players[currPlayerIndex].color);
+        cell.css('backgroundColor', players[currPlayerIndex].color);
         if (checkBoard(cellId)) {
             announceWin();
         }
@@ -196,11 +213,27 @@ let loadPage = function () {
     $('#btn-reset').slideUp(500);
 };
 
+function resizer(){
+    let cells = $('.board .cell');
+    console.log(cells,cells.length)
+    // temporarily remove previously set height
+    cells.height(''); 
+    // read the width of a cell
+    let width = cells.width();
+    // set the height to the width for all cells
+    cells.height(width);
+}
+
 let gameInit = function () {
     $(".player").html(players[currPlayerIndex].name);
     drawTable(rows, columns);
 
-    $(document).ready(loadPage);
+    //$(document).ready(loadPage);
     $('.board').on('click', 'td', clickCell);
     $('#btn-reset').on('click', resetPage);
+
+    // call resizer once initially and then
+    // every time the window resizes
+    setTimeout(resizer,0);
+    $(window).resize(resizer);
 };
