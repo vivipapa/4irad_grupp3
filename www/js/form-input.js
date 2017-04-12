@@ -3,7 +3,10 @@
 $(addStartGameEvent);
 
 //information about players, playersInfo    
-let playersInfo = [];
+//let playersInfo = [];
+//Save information about players in a global variable
+// playersInfo = [player1, player2];
+
 
 // Ask jQuery to call the function
 // readContactForm when the user clicks
@@ -61,9 +64,7 @@ function readContactForm(){
     gameInit();
   /*// User have filled in all info about players
   
-  //Save information about players in a global variable
-  playersInfo = [player1, player2];
-
+  
   // (replace all html inside the div #spela)
   $('#spela').html(
 

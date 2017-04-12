@@ -158,9 +158,17 @@ let checkDiagonal2 = function () {
 };
 
 let checkBoard = function (coords) {
-    return checkRow() || checkColumn() || checkDiagonal1() || checkDiagonal2();
+    return checkRow() || checkColumn() || checkDiagonal1() || checkDiagonal2(); 
+   
 };
 
+function announceDraw(){    
+    $('.cell').prop('disabled', true);
+    $('#btn-reset').css('visibility', 'visible');
+    $('#btn-reset').slideDown(500);
+    $('.announcement').html('It was a draw!!!');   
+    
+}
 let announceWin = function () {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
