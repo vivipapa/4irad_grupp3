@@ -68,8 +68,8 @@ margin-top: 10px;
  }
 
  .winningCell {
-    
-    border:5px solid green; 
+    opacity: 0.8;
+    /*border:5px solid green;*/
  }
  
  .containerBoard {

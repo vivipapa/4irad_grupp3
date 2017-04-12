@@ -203,6 +203,7 @@ let clickCell = function () {
         if (checkBoard(cellId)) {
             announceWin();
         }
+        
         else {
             advanceTurn();
         }
