@@ -5,6 +5,7 @@ window.onhashchange = switchPage;
 // Also run it as soon as the page loads
 // (the DOM is ready)
 $(switchPage);
+$(noScrollDown);
 
 function switchPage(){
 
@@ -13,6 +14,13 @@ function switchPage(){
 
   // Read the #-part of the url
   let l = location.hash;
+
+  // Don't try to start the game if no players
+  // registrered
+  if(l=='#spelar' && !window.players){
+    location.hash = "#spela";
+    return;
+  }
 
   // If no content in the #-part of the url
   if(!l){
@@ -27,6 +35,18 @@ function switchPage(){
   // Call makeMenuChoiceActive
   makeMenuChoiceActive(l);
 
+}
+
+function noScrollDown(){
+  // since the default browser behaviour
+  // when clicking a hash link is to scroll
+  // down to an element with the corresponding id
+  // we need to defeat to on nav a-tags
+  $('header nav a').click(function(){
+    setTimeout(function(){
+      window.scrollTo(0,0);
+    },0);
+  });
 }
 
 
@@ -45,7 +65,6 @@ function makeMenuChoiceActive(l){
   // find it's parent (a li-tag) and add
   // the class active to it
   
-  $('header nav a[href="' + l + '"]')
-    .parent().addClass('active');
+  $('header nav a[href="' + l + '"]').first().parent().addClass('active');
 
 }

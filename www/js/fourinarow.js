@@ -1,15 +1,14 @@
-
 let rows = 6;
 let columns = 7;
 let valArr = create2DArray(rows, columns);
 let currPlayerIndex = 0;
 
-function Player(name, color) {
-    this.name = name;
-    this.color = color;
-};
+//function xPlayer(name, color) {
+//    this.name = name;
+//    this.color = color;
+//};
 
-let players = [new Player('Spelare Ett', 'red'), new Player('Spelare Två', 'yellow')];
+//let players = [new xPlayer('Spelare Ett', 'red'), new xPlayer('Spelare Två', 'yellow')];
 
 
 function create2DArray(rows, columns) {
@@ -24,8 +23,9 @@ function create2DArray(rows, columns) {
     return arr;
 };
 
-let drawTable = function drawTable(n, m) {
+function drawTable(n, m) {
     let t = $(".board");
+    console.log(t)
     for (let i = 0; i < n; i++) {
         let row = $("<tr></tr>");
         $(t).append(row);
@@ -196,7 +196,7 @@ let loadPage = function () {
     $('#btn-reset').slideUp(500);
 };
 
-let init = function () {
+let gameInit = function () {
     $(".player").html(players[currPlayerIndex].name);
     drawTable(rows, columns);
 
@@ -204,6 +204,3 @@ let init = function () {
     $('.board').on('click', 'td', clickCell);
     $('#btn-reset').on('click', resetPage);
 };
-
-
-init();

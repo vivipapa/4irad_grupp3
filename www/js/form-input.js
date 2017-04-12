@@ -15,9 +15,30 @@ function addStartGameEvent(){
   
 }
 function changeSpelaToAvbryt(){
-  $('#changeMenu').text('Avbryt');
-  $('#changeMenu').click(gotoStartPage);
+  // since click functions run before the
+  // browser follows a link we need to
+  // delay changing the link (for a supershort while)
+  if($('#changeMenu a').text()=='Avbryt'){
+    // don't do this if the text is already avbryt
+    return;
+  }
+  setTimeout(function(){
+    $('#changeMenu a').text('Avbryt');
+    $('#changeMenu a').attr('href','#start');
+    //$('#changeMenu').click(gotoStartPage);
+  },0);
 }
+
+function changeAvbrytToSpela(){
+  $('header nav a').click(function(){
+    if($(this).text() == 'Spela'){ return; }
+    setTimeout(function(){
+      $('#changeMenu a').text('Spela');
+      $('#changeMenu a').attr('href','#spela');
+    },0);
+  });
+}
+$(changeAvbrytToSpela);
 
 function startGame(){
 
@@ -26,9 +47,9 @@ function startGame(){
 function readContactForm(){
 
   // Read values from the form input fields
-  let player1 = new Player($('#player1_name').val(), 1, $('input[name=player1_type]:checked').val());
-  let player2 = new Player($('#player2_name').val(), 2, $('input[name=player2_type]:checked').val());
-
+  let player1 = new Player($('#player1_name').val(), 1, $('input[name=player1_type]:checked').val(),'red');
+  let player2 = new Player($('#player2_name').val(), 2, $('input[name=player2_type]:checked').val(),'yellow');
+  window.players = [player1,player2];
   
   // Check if the return of the checkPlayers is true and if so stay on the same page
   let r = checkPlayers(player1.name, player2.name, player1.type, player2.type);
@@ -36,7 +57,8 @@ function readContactForm(){
     return;
   }
   else {
-    window.location='spel.html';
+    location.hash ='#spelar';
+    gameInit();
   /*// User have filled in all info about players
   
   //Save information about players in a global variable

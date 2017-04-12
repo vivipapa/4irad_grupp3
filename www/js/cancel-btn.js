@@ -11,15 +11,5 @@ function addCancelButtonEvent(){
 }
 
 function gotoStartPage(){
-
-  // Hide all "pages"
-  $('.page').hide();
-
-  let l = '#start';
-  
-  //Show Start page
-  $(l).show();
-
-  location = '#start';
-
-  }
+	location.hash = "#start";
+}
