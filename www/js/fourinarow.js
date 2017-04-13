@@ -1,19 +1,12 @@
+// Global variables
 let rows = 6;
 let columns = 7;
-let valArr = create2DArray(rows, columns);
+let valArr = createNewBoard(rows, columns);
 let currPlayerIndex = 0;
 
-//function xPlayer(name, color) {
-//    this.name = name;
-//    this.color = color;
-//};
-
-//let players = [new xPlayer('Spelare Ett', 'red'), new xPlayer('Spelare Två', 'yellow')];
 
 
-
-
-function create2DArray(rows, columns) {
+function createNewBoard(rows, columns) {
     let arr = new Array(rows);
     for (let i = 0; i < rows; i++) {
         arr[i] = new Array(columns);
@@ -23,6 +16,7 @@ function create2DArray(rows, columns) {
     }
 
     return arr;
+    console.log(arr);
 };
 
 function drawTable(n, m) {
@@ -40,13 +34,13 @@ function drawTable(n, m) {
     }
 };
 
-let advanceTurn = function () {
+function advanceTurn() {
     currPlayerIndex++;
     currPlayerIndex = currPlayerIndex % 2;
     $(".player").html(players[currPlayerIndex].name);
 };
 
-let findBottomFreeCell = function (row) {
+function findBottomFreeCell(row) {
     let cell = 0;
     console.log("ROW",row)
     for (let j = 0; j < rows; j++) {
@@ -63,7 +57,7 @@ let findBottomFreeCell = function (row) {
     return cell;
 };
 
-let getBottomCellId = function (cell) {
+function getBottomCellId(cell) {
     let ID = $(cell).attr('id');
     try {
         let coords = ID.split('-');
@@ -85,7 +79,7 @@ function markWin(...args){
     }
 }
 
-let checkRow = function () {
+function checkRow() {
     let isRow = false;
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns - 3; j++) {
@@ -103,7 +97,7 @@ let checkRow = function () {
     }
 };
 
-let checkColumn = function () {
+function checkColumn() {
     let isColumn = false;
     for (let i = 0; i < rows - 3; i++) {
         for (let j = 0; j < columns; j++) {
@@ -121,7 +115,7 @@ let checkColumn = function () {
     }
 };
 
-let checkDiagonal1 = function () {
+function checkDiagonal1() {
     let isDiag = false;
     for (let i = 0; i < rows - 3; i++) {
         for (let j = 0; j < columns - 3; j++) {
@@ -139,7 +133,7 @@ let checkDiagonal1 = function () {
     }
 };
 
-let checkDiagonal2 = function () {
+function checkDiagonal2() {
     let isDiag = false;
     for (let i = 0; i < rows - 3; i++) {
         for (let j = 3; j < columns; j++) {
@@ -157,7 +151,7 @@ let checkDiagonal2 = function () {
     }
 };
 
-let checkBoard = function (coords) {
+function checkBoard(coords) {
     return checkRow() || checkColumn() || checkDiagonal1() || checkDiagonal2(); 
    
 };
@@ -168,8 +162,9 @@ function announceDraw(){
     $('#btn-reset').slideDown(500);
     $('.announcement').html('It was a draw!!!');   
     
-}
-let announceWin = function () {
+};
+
+function announceWin() {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
@@ -177,7 +172,7 @@ let announceWin = function () {
 
 };
 
-let getIdTrace = function (cell) {
+function getIdTrace(cell) {
     let cellId = getBottomCellId(cell);
     let idTrace = [];
     for (let i = 0; i < cellId[0]; i++) {
@@ -190,9 +185,7 @@ let getIdTrace = function (cell) {
     return idTrace;
 };
 
-
-
-let clickCell = function () {
+function clickCell() {
     let cellId = getBottomCellId(this);
     let cell = $('#' + cellId);
     cellId = cellId.split('-');
@@ -210,7 +203,7 @@ let clickCell = function () {
     }
 };
 
-let resetPage = function () {
+function resetPage() {
     let reloadPage = function () {
         location.reload();
     };
@@ -218,7 +211,7 @@ let resetPage = function () {
     $('#btn-reset').slideUp(500, reloadPage);
 };
 
-let loadPage = function () {
+function loadPage() {
     $('#btn-reset').slideUp(500);
 };
 
@@ -231,9 +224,9 @@ function resizer(){
     let width = cells.width();
     // set the height to the width for all cells
     cells.height(width);
-}
+};
 
-let gameInit = function () {
+function gameInit() {
     $(".player").html(players[currPlayerIndex].name);
     drawTable(rows, columns);
 
