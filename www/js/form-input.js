@@ -82,21 +82,21 @@ function readContactForm(){
 //function that checks if there are two players or a player and a computer and if the fields are filled with two names 
 function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
   if (player1_name==="" || player2_name===""){
-    alert('You are missing a player. Please fill in both names in the form even if you are playing against a computer');
+    alert('Fattas en spelare. Fill in båda namn på formen även om du spelar mot en dator.');
     return {stayOnPage:true};
   }
   else {
     if (pl1_type==="human" && pl2_type==="human"){
-      alert(player1_name + ' you will be playing against ' + player2_name +'.');
+      alert(player1_name + ' spelar mot ' + player2_name +'.');
     }
     else if (pl1_type==="human" && pl2_type==="computer") {
-      alert(player1_name + ' you will be playing against a computer.');
+      alert(player1_name + ' spelar mot en dator som heter '+ player2_name +'.');
     }
     else if (pl1_type==="computer" && pl2_type==="human"){
-      alert(player2_name + ' you will be playing against a computer.');
+      alert(player2_name + ' spelar mot en dator som heter '+ player1_name +'.');
     }
     else {
-      alert('A computer with the name: ' + player1_name + ' is going to play against a computer named: '+ player2_name+ '.');
+      alert('En dator som heter ' + player1_name + ' spelar mot en dator som heter '+ player2_name+ '.');
     }
     return {stayOnPage:false};
   }  
