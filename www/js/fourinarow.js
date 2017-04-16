@@ -17,7 +17,7 @@ function createNewBoard(rows, columns) {
 
     return arr;
     console.log(arr);
-};
+}
 
 function drawTable(n, m) {
     let t = $(".board");
@@ -32,17 +32,17 @@ function drawTable(n, m) {
             $(row).append(cell);
         }
     }
-};
+}
 
 function advanceTurn() {
     currPlayerIndex++;
     currPlayerIndex = currPlayerIndex % 2;
     $(".player").html(players[currPlayerIndex].name);
-};
+}
 
 function findBottomFreeCell(row) {
     let cell = 0;
-    console.log("ROW",row)
+    console.log("ROW",row);
     for (let j = 0; j < rows; j++) {
         if (valArr[j][row] > 0) {
             cell = j - 1;
@@ -55,20 +55,22 @@ function findBottomFreeCell(row) {
     }
     console.log("FREE CELL",cell);
     return cell;
-};
+}
 
 function getBottomCellId(cell) {
     let ID = $(cell).attr('id');
+    console.log("ID=", ID);  //-----
     try {
         let coords = ID.split('-');
         coords[1] = parseInt(coords[1]);
         coords[0] = findBottomFreeCell(coords[1]);
+        console.log("return getBottomCellId", coords.join('-'));
         return coords.join('-');
     }
     catch (err) {
 
     }
-};
+}
 
 function markWin(...args){
     for(let i = 0; i < args.length; i+=2){
@@ -95,7 +97,7 @@ function checkRow() {
             }
         }
     }
-};
+}
 
 function checkColumn() {
     let isColumn = false;
@@ -113,7 +115,7 @@ function checkColumn() {
             }
         }
     }
-};
+}
 
 function checkDiagonal1() {
     let isDiag = false;
@@ -131,7 +133,7 @@ function checkDiagonal1() {
             }
         }
     }
-};
+}
 
 function checkDiagonal2() {
     let isDiag = false;
@@ -149,12 +151,12 @@ function checkDiagonal2() {
             }
         }
     }
-};
+}
 
 function checkBoard(coords) {
     return checkRow() || checkColumn() || checkDiagonal1() || checkDiagonal2(); 
    
-};
+}
 
 function announceDraw(){    
     $('.cell').prop('disabled', true);
@@ -162,7 +164,7 @@ function announceDraw(){
     $('#btn-reset').slideDown(500);
     $('.announcement').html('It was a draw!!!');   
     
-};
+}
 
 function announceWin() {
     $('.cell').prop('disabled', true);
@@ -170,7 +172,7 @@ function announceWin() {
     $('#btn-reset').slideDown(500);
     $('.announcement').html(players[currPlayerIndex].name + ' vinner!');
 
-};
+}
 
 function getIdTrace(cell) {
     let cellId = getBottomCellId(cell);
@@ -183,7 +185,7 @@ function getIdTrace(cell) {
         }
     }
     return idTrace;
-};
+}
 
 function clickCell() {
     let cellId = getBottomCellId(this);
@@ -201,19 +203,22 @@ function clickCell() {
             advanceTurn();
         }
     }
-};
+    if (players[0].type == "computer" || players[1].type == "computer"){
+        computerClick();
+    }
+}
 
 function resetPage() {
     let reloadPage = function () {
         location.reload();
-    };
+    }
 
     $('#btn-reset').slideUp(500, reloadPage);
-};
+}
 
 function loadPage() {
     $('#btn-reset').slideUp(500);
-};
+}
 
 function resizer(){
     let cells = $('.board .cell');
@@ -224,11 +229,50 @@ function resizer(){
     let width = cells.width();
     // set the height to the width for all cells
     cells.height(width);
-};
+}
+
+//function that put a chip in a random column
+function computerClick(){
+    let try_to_find_cell = true;
+    let column = 0;
+    do{
+        column = Math.floor((Math.random() * 7)); // return random integer in interval 0..6
+        if(findBottomFreeCell(column)!=-1){
+
+            
+            let coords = [findBottomFreeCell(column), column]
+            let cellId = coords.join('-'); //string, f.ex. cellId = "5-1"
+            let cell = $('#' + cellId);
+            cellId = cellId.split('-'); //f.ex. cellId = [5,1]
+            if (cellId[0] >= 0) {
+                valArr[cellId[0]][cellId[1]] = currPlayerIndex + 1;
+
+                cell.css('backgroundColor', players[currPlayerIndex].color);
+                if (checkBoard(cellId)) {
+                    announceWin();
+                }
+                
+                else {
+                    advanceTurn();
+                }
+            }
+            try_to_find_cell = false;
+        }   
+
+    }
+    while(try_to_find_cell);
+
+}
 
 function gameInit() {
     $(".player").html(players[currPlayerIndex].name);
     drawTable(rows, columns);
+
+    if (players[0].type == "computer"){
+        console.log("player1 = computer!!!");
+       $('.board').append(computerClick);  
+      
+    }
 
     //$(document).ready(loadPage);
     $('.board').on('click', 'td', clickCell);
@@ -238,4 +282,6 @@ function gameInit() {
     // every time the window resizes
     setTimeout(resizer,0);
     $(window).resize(resizer);
-};
+}
+
+

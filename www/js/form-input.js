@@ -62,21 +62,7 @@ function readContactForm(){
   else {
     location.hash ='#spelar';
     gameInit();
-  /*// User have filled in all info about players
-  
-  
-  // (replace all html inside the div #spela)
-  $('#spela').html(
-
-
-    
-    '<h1>Name1 ' + player1.name + '!</h1>' +
-    '<h1>Name2 ' + player2.name + '!</h1>' +
-    '<h1>Name1_type ' + player1.type + '!</h1>' +
-    '<h1>Name2_type ' + player2.type + '!</h1>' 
-  );*/
-
-  }
+   }
 }
 
 //function that checks if there are two players or a player and a computer and if the fields are filled with two names 
@@ -102,3 +88,5 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
   }  
   
  }
+
+ 
