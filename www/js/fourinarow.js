@@ -163,7 +163,7 @@ function announceDraw(){
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
-    $('.announcement').html('It was a draw!!!');   
+    $('.announcement').html('Det blev oavgjort!!!');   
     
 }
 
