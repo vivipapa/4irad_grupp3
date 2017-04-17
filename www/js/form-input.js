@@ -82,7 +82,8 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
       alert(player2_name + ' spelar mot en dator som heter '+ player1_name +'.');
     }
     else {
-      alert('En dator som heter ' + player1_name + ' spelar mot en dator som heter '+ player2_name+ '.');
+       alert('Vänligen välj minst en mänsklig spelare!');
+       return {stayOnPage:true};      
     }
     return {stayOnPage:false};
   }  
