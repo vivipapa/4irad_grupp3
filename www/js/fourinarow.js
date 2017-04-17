@@ -3,7 +3,8 @@ let rows = 6;
 let columns = 7;
 let valArr = createNewBoard(rows, columns);
 let currPlayerIndex = 0;
-
+let countOfMoves = 0;
+const MAX_MOVES = 42;
 
 
 function createNewBoard(rows, columns) {
@@ -192,13 +193,16 @@ function clickCell() {
     let cell = $('#' + cellId);
     cellId = cellId.split('-');
     if (cellId[0] >= 0) {
+        countOfMoves++;
         valArr[cellId[0]][cellId[1]] = currPlayerIndex + 1;
 
         cell.css('backgroundColor', players[currPlayerIndex].color);
         if (checkBoard(cellId)) {
             announceWin();
         }
-        
+        else if (countOfMoves >= MAX_MOVES){
+                    announceDraw();
+                }
         else {
             advanceTurn();
         }
@@ -245,13 +249,16 @@ function computerClick(){
             let cell = $('#' + cellId);
             cellId = cellId.split('-'); //f.ex. cellId = [5,1]
             if (cellId[0] >= 0) {
+                countOfMoves++;
                 valArr[cellId[0]][cellId[1]] = currPlayerIndex + 1;
 
                 cell.css('backgroundColor', players[currPlayerIndex].color);
                 if (checkBoard(cellId)) {
                     announceWin();
                 }
-                
+                else if (countOfMoves >= MAX_MOVES){
+                    announceDraw();
+                }
                 else {
                     advanceTurn();
                 }
