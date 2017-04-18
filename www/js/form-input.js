@@ -71,6 +71,16 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
     alert('Fattas en spelare. Fill in båda namn på formen även om du spelar mot en dator.');
     return {stayOnPage:true};
   }
+  else if (pl1_type === "computer" && pl2_type === "computer"){
+    alert('Vänligen välj minst en mänsklig spelare!');
+       return {stayOnPage:true};
+  }
+  else{
+    return {stayOnPage: false};
+  }
+  
+}
+/*
   else {
     if (pl1_type==="human" && pl2_type==="human"){
       alert(player1_name + ' spelar mot ' + player2_name +'.');
@@ -89,5 +99,5 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
   }  
   
  }
-
+*/
  

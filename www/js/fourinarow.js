@@ -29,7 +29,7 @@ function drawTable(n, m) {
             let cell = $("<td class='cell'></td>");
             $(cell).attr('id', i + '-' + j);
             $(cell).data('val', valArr[i][j]);
-            // console.log($(cell).attr('id'), ' : ', valArr[i][j]);
+             console.log($(cell).attr('id'), ' : ', valArr[i][j]);
             $(row).append(cell);
         }
     }
@@ -47,12 +47,15 @@ function findBottomFreeCell(row) {
     for (let j = 0; j < rows; j++) {
         if (valArr[j][row] > 0) {
             cell = j - 1;
+
             break;
         }
         if (j === rows - 1) {
-            cell = j;
+            cell = j;   
             break;
         }
+        
+
     }
     console.log("FREE CELL",cell);
     return cell;
@@ -60,7 +63,7 @@ function findBottomFreeCell(row) {
 
 function getBottomCellId(cell) {
     let ID = $(cell).attr('id');
-    console.log("ID=", ID);  //-----
+    console.log("ID=", ID);  
     try {
         let coords = ID.split('-');
         coords[1] = parseInt(coords[1]);
@@ -171,7 +174,7 @@ function announceWin() {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
-    $('.announcement').html(players[currPlayerIndex].name + ' vinner!');
+    $('.announcement').html(players[currPlayerIndex].name + ' vinner efter ' + countOfMoves + ' drag!');
 
 }
 
@@ -201,8 +204,8 @@ function clickCell() {
             announceWin();
         }
         else if (countOfMoves >= MAX_MOVES){
-                    announceDraw();
-                }
+                announceDraw();
+        }
         else {
             advanceTurn();
         }
@@ -215,6 +218,7 @@ function clickCell() {
 function resetPage() {
     let reloadPage = function () {
         location.reload();
+
     }
 
     $('#btn-reset').slideUp(500, reloadPage);
