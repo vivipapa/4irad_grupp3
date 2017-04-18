@@ -39,7 +39,7 @@ function advanceTurn() {
     currPlayerIndex++;
     currPlayerIndex = currPlayerIndex % 2;
     players[currPlayerIndex].moves++; 
-    $(".player").html(players[currPlayerIndex].name + ' has made ' + players[currPlayerIndex].moves + ' moves.');
+    $(".player").html(players[currPlayerIndex].name + ' har gjort ' + players[currPlayerIndex].moves + ' moves.');
 }
 
 function findBottomFreeCell(row) {
@@ -172,7 +172,8 @@ function announceWin() {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
-    $('.announcement').html(players[currPlayerIndex].name + ' vinner!');
+    $('.announcement').html(players[currPlayerIndex].name + ' vinner med ' + players[currPlayerIndex].moves + ' antal moves!');
+    players[currPlayerIndex].winner = true;
 
 }
 
@@ -271,6 +272,8 @@ function computerClick(){
     while(try_to_find_cell);
 
 }
+
+
 
 function gameInit() {
     $(".player").html(players[currPlayerIndex].name);
