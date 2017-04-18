@@ -50,8 +50,8 @@ function startGame(){
 function readContactForm(){
 
   // Read values from the form input fields
-  let player1 = new Player($('#player1_name').val(), 1, $('input[name=player1_type]:checked').val(),'red');
-  let player2 = new Player($('#player2_name').val(), 2, $('input[name=player2_type]:checked').val(),'yellow');
+  let player1 = new Player($('#player1_name').val(), $('input[name=player1_type]:checked').val(),'red',0);
+  let player2 = new Player($('#player2_name').val(), $('input[name=player2_type]:checked').val(),'yellow',0);
   window.players = [player1,player2];
   
   // Check if the return of the checkPlayers is true and if so stay on the same page

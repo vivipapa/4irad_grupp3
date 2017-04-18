@@ -38,7 +38,8 @@ function drawTable(n, m) {
 function advanceTurn() {
     currPlayerIndex++;
     currPlayerIndex = currPlayerIndex % 2;
-    $(".player").html(players[currPlayerIndex].name);
+    players[currPlayerIndex].moves++; 
+    $(".player").html(players[currPlayerIndex].name + ' has made ' + players[currPlayerIndex].moves + ' moves.');
 }
 
 function findBottomFreeCell(row) {

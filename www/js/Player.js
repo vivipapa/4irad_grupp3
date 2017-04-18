@@ -1,11 +1,11 @@
 class Player {
   // some properties: name, score (numberOfMove) 
   // one possible method: makeMove
-   constructor(name, number, type, color){
+   constructor(name, type, color, moves){
   	this.name = name;
-  	this.number = number;
   	this.type = type;
   	this.color = color;
+  	this.moves = moves;
   }
 
 }

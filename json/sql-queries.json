@@ -10,3 +10,9 @@
   "addAnimal":
   "INSERT INTO animals SET ?"
 }*/
+"addPlayer":
+"INSERT INTO players SET ?"
+
+"showBestTenNames":
+"SELECT name FROM players ORDER BY moves LIMIT 10"
+
