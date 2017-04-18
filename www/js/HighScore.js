@@ -1,3 +1,6 @@
-class HighScore{
+$ (showBestTen);
+
+function showBestTen(){
 
 }
+

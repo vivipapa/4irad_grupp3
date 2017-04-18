@@ -7,13 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "simple",
-    "example",
-    "webserver"
+    "spel",
+    "fyra i rad",
+    "online"
   ],
   "author": "4irad Group 3",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0"
   }
 }
