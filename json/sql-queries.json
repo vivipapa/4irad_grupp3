@@ -1,18 +1,10 @@
-/* Thomas exempel{
-//onoma ths entolis
-  "allAnimalOwners": 
-  //entoli
-  "SELECT * FROM animal_owners",
+{
 
-  "theOwnerOfAnAnimal":
-  "SELECT pnr, first_name, last_name FROM animal_owners, animals WHERE animals.name = ? AND pnr = animal_owner_pnr",
-
-  "addAnimal":
-  "INSERT INTO animals SET ?"
-}*/
 "addPlayer":
-"INSERT INTO players SET ?"
+"INSERT INTO players SET ?",
 
 "showBestTenNames":
 "SELECT name FROM players ORDER BY moves LIMIT 10"
+
+}
 
