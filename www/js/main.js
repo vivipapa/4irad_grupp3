@@ -1,5 +1,5 @@
 //Call the fuction that adds the winner to the database fyrairad
-function addWinner{
+function addWinner(){
     if (players[currPlayerIndex].winner === true){
       let name = players[currPlayerIndex].name;
       let type = players[currPlayerIndex].type;
@@ -7,8 +7,8 @@ function addWinner{
 
       new RunSqlQuery(
       'addPlayer', {
-        name: name
-        type: type
+        name: name,
+        type: type,
         moves: moves
       },
       function(response){
@@ -16,3 +16,8 @@ function addWinner{
       });
     }
 }
+
+
+new RunSqlQuery('showBestTenNames',function(hlist){
+  console.log("Hi-score list",hlist)
+});
