@@ -261,6 +261,8 @@ function computerClick(){
                 cell.css('backgroundColor', players[currPlayerIndex].color);
                 if (checkBoard(cellId)) {
                     announceWin();
+                    try_to_find_cell = false;
+                    return;
                 }
                 else if (countOfMoves >= MAX_MOVES){
                     announceDraw();
