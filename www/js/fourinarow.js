@@ -204,6 +204,7 @@ function clickCell() {
         cell.css('backgroundColor', players[currPlayerIndex].color);
         if (checkBoard(cellId)) {
             announceWin();
+            return;
         }
         else if (countOfMoves >= MAX_MOVES){
                 announceDraw();
@@ -246,7 +247,7 @@ function computerClick(){
     let try_to_find_cell = true;
     let column = 0;
     do{
-        column = Math.floor((Math.random() * 7)); // return random integer in interval 0..6
+        column = Math.floor((Math.random()*7)); // return random integer in interval 0..6
         if(findBottomFreeCell(column)!=-1){
 
             
@@ -261,6 +262,8 @@ function computerClick(){
                 cell.css('backgroundColor', players[currPlayerIndex].color);
                 if (checkBoard(cellId)) {
                     announceWin();
+                    try_to_find_cell = false;
+                    return;
                 }
                 else if (countOfMoves >= MAX_MOVES){
                     announceDraw();
