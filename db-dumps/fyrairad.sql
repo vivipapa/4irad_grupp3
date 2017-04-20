@@ -37,8 +37,8 @@ CREATE TABLE players (
 --
 
 INSERT INTO players (id, name, moves) VALUES
-(1, vivi, 4),
-(2, anna, 8);
+(1, "vivi", 4),
+(2, "anna", 8);
 
 --
 -- Index för dumpade tabeller
