@@ -195,6 +195,9 @@ function getIdTrace(cell) {
 }
 
 function clickCell() {
+    if (window.computerInPlay){
+        return;
+    }
     let cellId = getBottomCellId(this);
     let cell = $('#' + cellId);
     cellId = cellId.split('-');
@@ -215,7 +218,9 @@ function clickCell() {
         }
     }
     if (players[0].type == "computer" || players[1].type == "computer"){
-        computerClick();
+        window.computerInPlay = true;
+        setTimeout(computerClick,2000);
+        
     }
 }
 
@@ -274,6 +279,7 @@ function computerClick(){
                 }
             }
             try_to_find_cell = false;
+             window.computerInPlay = false;
         }   
 
     }
