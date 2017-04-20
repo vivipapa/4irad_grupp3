@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Tabellstruktur `players`
 --
 
-CREATE TABLE `players` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `moves` int(10) NOT NULL
+CREATE TABLE 'players' (
+  'id' int(11) NOT NULL,
+  'name' varchar(100) NOT NULL,
+  'type' varchar(100) NOT NULL,
+  'moves' int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -40,8 +40,8 @@ CREATE TABLE `players` (
 --
 -- Index för tabell `players`
 --
-ALTER TABLE `players`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'players'
+  ADD PRIMARY KEY ('id');
 
 --
 -- AUTO_INCREMENT för dumpade tabeller
@@ -50,8 +50,8 @@ ALTER TABLE `players`
 --
 -- AUTO_INCREMENT för tabell `players`
 --
-ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE 'players'
+  MODIFY 'id' int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
