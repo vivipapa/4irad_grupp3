@@ -51,7 +51,7 @@ function readContactForm(){
 
   // Read values from the form input fields
   let player1 = new Player($('#player1_name').val(), $('input[name=player1_type]:checked').val(),'red',1, false);
-  let player2 = new Player($('#player2_name').val(), $('input[name=player2_type]:checked').val(),'yellow',1, false);
+  let player2 = new Player($('#player2_name').val(), $('input[name=player2_type]:checked').val(),'yellow',0, false);
   window.players = [player1,player2];
   
   // Check if the return of the checkPlayers is true and if so stay on the same page
