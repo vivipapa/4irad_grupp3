@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 18 apr 2017 kl 21:32
+-- Tid vid skapande: 20 apr 2017 kl 11:37
 -- Serverversion: 10.1.21-MariaDB
 -- PHP-version: 5.6.30
 
@@ -29,9 +29,16 @@ SET time_zone = "+00:00";
 CREATE TABLE players (
   id int(11) NOT NULL,
   name varchar(100) NOT NULL,
-  type varchar(100) NOT NULL,
   moves int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumpning av Data i tabell `players`
+--
+
+INSERT INTO players (id, name, moves) VALUES
+(1, vivi, 4),
+(2, anna, 8);
 
 --
 -- Index för dumpade tabeller
@@ -51,7 +58,7 @@ ALTER TABLE players
 -- AUTO_INCREMENT för tabell `players`
 --
 ALTER TABLE players
-  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
