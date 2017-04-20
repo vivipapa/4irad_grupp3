@@ -178,6 +178,7 @@ function announceWin() {
     $('.announcement').html(players[currPlayerIndex].name + ' vinner efter ' + players[currPlayerIndex].moves + ' drag!');
     players[currPlayerIndex].winner = true;
     addWinner();
+    
 }
 
 function getIdTrace(cell) {

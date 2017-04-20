@@ -13,9 +13,25 @@ function addWinner(){
         console.log('addPlayer',response);
       });
     }
+
 }
 
-
-new RunSqlQuery('showBestTenNames',function(hlist){
-  console.log("Hi-score list",hlist)
+// Wait for the DOM to load
+$(function(){
+  // Run an sql query to get the high score list
+  new RunSqlQuery('showBestTenNames',function(hlist){
+    // The result has come back from the database
+    // loop through them and create HTML elements
+    let pos = 1;
+    for(let person of hlist){
+      $('#highscore tbody').append(
+        '<tr>' +
+        '<td>' + pos + '</td>' +
+        '<td>' + person.name + '</td>' +
+        '<td>' + person.moves + '</td>' +
+        '</tr>'
+      );
+      pos++;
+    }
+  });
 });
