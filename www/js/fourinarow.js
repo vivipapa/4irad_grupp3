@@ -38,6 +38,7 @@ function drawTable(n, m) {
 function advanceTurn() {
     currPlayerIndex++;
     currPlayerIndex = currPlayerIndex % 2;
+    players[currPlayerIndex].moves++;
     $(".player").html(players[currPlayerIndex].name);
 }
 
@@ -174,7 +175,7 @@ function announceWin() {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
-    $('.announcement').html(players[currPlayerIndex].name + ' vinner efter ' + countOfMoves + ' drag!');
+    $('.announcement').html(players[currPlayerIndex].name + ' vinner efter ' + players[currPlayerIndex].moves + ' drag!');
 
 }
 
