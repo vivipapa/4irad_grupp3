@@ -42,11 +42,11 @@ function advanceTurn() {
     $(".player").html(players[currPlayerIndex].name);
 }
 
-function findBottomFreeCell(row) {
+//Function return first free cell from specific column 
+function findBottomFreeCell(column) {
     let cell = 0;
-    console.log("ROW",row);
     for (let j = 0; j < rows; j++) {
-        if (valArr[j][row] > 0) {
+        if (valArr[j][column] > 0) {
             cell = j - 1;
 
             break;
@@ -131,7 +131,7 @@ function checkDiagonal1() {
                     && valArr[i + 1][j + 1] === valArr[i + 2][j + 2]
                     && valArr[i + 2][j + 2] === valArr[i + 3][j + 3]) {
                     isDiag = true;
-                    markWin(i,j,i+1,j+2,i+2,j+2,i+3,j+3);
+                    markWin(i,j,i+1,j+1,i+2,j+2,i+3,j+3);
                     console.log('Diag: ', valArr[i][j], valArr[i + 1][j + 1], valArr[i + 2][j + 2], valArr[i + 3][j + 3]);
                     return isDiag;
                 }
