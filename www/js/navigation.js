@@ -68,3 +68,8 @@ function makeMenuChoiceActive(l){
   $('header nav a[href="' + l + '"]').first().parent().addClass('active');
 
 }
+
+function goToStartPage(){
+  location.reload();
+  location.hash = "#start"
+}
