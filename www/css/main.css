@@ -9,6 +9,16 @@
   height: 325px !important;
 }
 
+#spelregler p {
+  font-size: 16pt;
+}
+
+#spelregler h2 {
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: center;
+}
+
 footer h4, footer p {
   text-align:center;
 }
