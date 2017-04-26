@@ -12,6 +12,7 @@ $(addStartGameEvent);
 // readContactForm when the user clicks
 // on something with the class start-btn
 function addStartGameEvent(){
+  $('#spela').click(jumboSpela);
   $('#changeMenu').click(changeSpelaToAvbryt);
   $('.start-btn').click(readContactForm);
   $(startGame);
@@ -31,6 +32,18 @@ function changeSpelaToAvbryt(){
     //$('#changeMenu').click(gotoStartPage);
   },0);
 }
+
+function jumboSpela(){
+  if($('#changeMenu a').text()=='Avbryt'){
+    // don't do this if the text is already avbryt
+    return;
+  }
+  setTimeout(function(){
+    $('#changeMenu a').text('Avbryt');
+    $('#changeMenu a').attr('href','#start');
+  },0);
+}
+
 
 function changeAvbrytToSpela(){
   $('header nav a').click(function(){
