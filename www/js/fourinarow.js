@@ -167,6 +167,8 @@ function announceDraw(){
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
+    $('#btn-close').css('visibility', 'visible');
+    $('#btn-close').slideDown(500);
     $('.announcement').html('Det blev oavgjort!!!');   
     
 }
@@ -175,6 +177,8 @@ function announceWin() {
     $('.cell').prop('disabled', true);
     $('#btn-reset').css('visibility', 'visible');
     $('#btn-reset').slideDown(500);
+    $('#btn-close').css('visibility', 'visible');
+    $('#btn-close').slideDown(500);
     $('.announcement').html(players[currPlayerIndex].name + ' vinner efter ' + players[currPlayerIndex].moves + ' drag!');
     players[currPlayerIndex].winner = true;
     addWinner();
@@ -231,10 +235,12 @@ function resetPage() {
     }
 
     $('#btn-reset').slideUp(500, reloadPage);
+    $('#btn-close').slideUp(500, reloadPage);
 }
 
 function loadPage() {
     $('#btn-reset').slideUp(500);
+    $('#btn-close').slideUp(500);
 }
 
 function resizer(){
