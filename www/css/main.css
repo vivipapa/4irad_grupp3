@@ -9,6 +9,10 @@
   height: 325px !important;
 }
 
+.fyraRegler-img, .fyraRegler2-img {
+  width: 100%
+}
+
 footer h4, footer p {
   text-align:center;
 }
@@ -41,14 +45,15 @@ footer h4 {
 margin-top: 10px;
 }
 
-//DD
+#spelregler p {
+  font-size: 16pt;
+}
 
-
-//VP
-
-
-
-//WW
+#spelregler h2 {
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: center;
+}
 
  .announcement { 
      width: 100%;
@@ -64,9 +69,7 @@ margin-top: 10px;
  
  .board {
     background: royalblue;
-    width: 100%;
-    
-    
+    width: 100%;   
  }
  
  .cell {

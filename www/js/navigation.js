@@ -37,6 +37,11 @@ function switchPage(){
 
 }
 
+function goToStartPage(){
+  location.reload();
+  location.hash = "#start";
+}
+
 function noScrollDown(){
   // since the default browser behaviour
   // when clicking a hash link is to scroll
@@ -48,7 +53,6 @@ function noScrollDown(){
     },0);
   });
 }
-
 
 function makeMenuChoiceActive(l){
 
@@ -67,9 +71,4 @@ function makeMenuChoiceActive(l){
   
   $('header nav a[href="' + l + '"]').first().parent().addClass('active');
 
-}
-
-function goToStartPage(){
-  location.reload();
-  location.hash = "#start"
 }

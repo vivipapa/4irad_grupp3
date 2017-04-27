@@ -93,24 +93,3 @@ function checkPlayers(player1_name,player2_name,pl1_type,pl2_type){
   }
   
 }
-/*
-  else {
-    if (pl1_type==="human" && pl2_type==="human"){
-      alert(player1_name + ' spelar mot ' + player2_name +'.');
-    }
-    else if (pl1_type==="human" && pl2_type==="computer") {
-      alert(player1_name + ' spelar mot en dator som heter '+ player2_name +'.');
-    }
-    else if (pl1_type==="computer" && pl2_type==="human"){
-      alert(player2_name + ' spelar mot en dator som heter '+ player1_name +'.');
-    }
-    else {
-       alert('Vänligen välj minst en mänsklig spelare!');
-       return {stayOnPage:true};      
-    }
-    return {stayOnPage:false};
-  }  
-  
- }
-*/
- 

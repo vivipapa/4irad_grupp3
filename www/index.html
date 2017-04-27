@@ -20,6 +20,7 @@
   <script src="js/form-input.js"></script>
   <script src="js/Player.js"></script>   
   <script src="js/Board.js"></script>  
+  <script src="js/Game.js"></script>  
   <script src="js/main.js"></script> 
   <script src="js/fourinarow.js"></script>
   <!-- Don't allow scaling on mobile devices -->
@@ -63,7 +64,7 @@
           <div class="jumbotron">
             <h1>Välkommen!</h1>
             <p>Spela det klassika spelet 4-i-rad online!</p>
-            <p align="right"><a class="btn btn-primary btn-lg" href="#spela" role="button" onclick="jumboSpela();"> Spela</a></p>
+            <p align="right"><a class="btn btn-primary btn-lg" href="#spela" role="button" onclick="jumboSpela();">Spela</a></p>
           </div>
 
         </div>
@@ -188,7 +189,7 @@
             <button type="button" id='btn-reset' class="btn btn-success">Spela igen</button>
             <button type="button" id='btn-close' class="btn btn-danger" onclick="goToStartPage();">Avsluta spel</button>
           </div>
-        </div>         
+        </div>                   
     </div>
 
     <div id="spelregler" class="page">
@@ -208,11 +209,11 @@
 
       <div class="col-md-4">
           <div class="spregler">
-            <img src="imgs/fyrairad-regler.gif" class="img-responsive fyrairad-regler-img">
+            <img src="imgs/fyrairad-regler.gif" class="img-responsive fyraRegler-img">
           </div>
           <p></p>
           <div class="spregler2">
-            <img src="imgs/4irad-bygga-over.gif" class="img-responsive 4irad-bygga-over-img">
+            <img src="imgs/4irad-bygga-over.gif" class="img-responsive fyraRegler2-img">
           </div>
       </div>
     </div>
@@ -226,10 +227,10 @@
           <tr>
             <th>Plats</th>
             <th>Spelare namn</th>
-            <th>Antal data-target</th>            
+            <th>Antal drag</th>         
           </tr>
         </thead>
-        <tbody>
+        <tbody> 
         </tbody>
       </table>
     </div>    
@@ -260,16 +261,3 @@
   
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
