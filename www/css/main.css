@@ -9,8 +9,18 @@
   height: 325px !important;
 }
 
+
 .fyraRegler-img, .fyraRegler2-img {
   width: 100%
+
+#spelregler p {
+  font-size: 16pt;
+}
+
+#spelregler h2 {
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: center;
 }
 
 footer h4, footer p {
